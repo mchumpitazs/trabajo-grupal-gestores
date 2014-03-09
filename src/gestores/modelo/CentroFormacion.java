@@ -1,73 +1,66 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestores.modelo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- *
+ * 
  * @author Lino Espinoza
  */
 public class CentroFormacion {
-    
-    private int idCentroFormacion;
-    private String nombre;
-    private String urlCentroFormacion;
-    private String urlLogo;
-    
-    private TipoCentroFormacion tipoCentroFormacion;
-    
-    private ArrayList<Factura> facturas;
 
-    // Getters / Setters
-    public int getIdCentroFormacion() {
-        return idCentroFormacion;
-    }
+	private String idCentroFormacion;
+	private String nombre;
+	private String urlCentroFormacion;
+	private String urlLogo;
+	private TipoCentroFormacion tipoCentroFormacion;
+	private List<Factura> facturas;
 
-    public void setIdCentroFormacion(int idCentroFormacion) {
-        this.idCentroFormacion = idCentroFormacion;
-    }
+	// Getters / Setters
+	public String getIdCentroFormacion() {
+		return idCentroFormacion;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setIdCentroFormacion(String idCentroFormacion) {
+		this.idCentroFormacion = idCentroFormacion;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getUrlCentroFormacion() {
-        return urlCentroFormacion;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setUrlCentroFormacion(String urlCentroFormacion) {
-        this.urlCentroFormacion = urlCentroFormacion;
-    }
+	public String getUrlCentroFormacion() {
+		return urlCentroFormacion;
+	}
 
-    public String getUrlLogo() {
-        return urlLogo;
-    }
+	public void setUrlCentroFormacion(String urlCentroFormacion) {
+		this.urlCentroFormacion = urlCentroFormacion;
+	}
 
-    public void setUrlLogo(String urlLogo) {
-        this.urlLogo = urlLogo;
-    }
+	public String getUrlLogo() {
+		return urlLogo;
+	}
 
-    public TipoCentroFormacion getTipoCentroFormacion() {
-        return tipoCentroFormacion;
-    }
+	public void setUrlLogo(String urlLogo) {
+		this.urlLogo = urlLogo;
+	}
 
-    public void setTipoCentroFormacion(TipoCentroFormacion tipoCentroFormacion) {
-        this.tipoCentroFormacion = tipoCentroFormacion;
-    }
+	public TipoCentroFormacion getTipoCentroFormacion() {
+		return tipoCentroFormacion;
+	}
 
-    public ArrayList<Factura> getFacturas() {
-        return facturas;
-    }
+	public void setTipoCentroFormacion(TipoCentroFormacion tipoCentroFormacion) {
+		this.tipoCentroFormacion = tipoCentroFormacion;
+	}
 
-    public void setFacturas(ArrayList<Factura> facturas) {
-        this.facturas = facturas;
-    }
-    
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
 }
