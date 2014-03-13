@@ -36,6 +36,7 @@ public class Idea {
     
     // Getters / Setters
     
+       
     public int getIdIdea() {
         return idIdea;
     }

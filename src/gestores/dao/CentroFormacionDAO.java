@@ -101,7 +101,7 @@ public class CentroFormacionDAO extends BaseDAO {
 
 	public CentroFormacion obtener(String idCentroFormacion)
 			throws DAOExcepcion {
-		CentroFormacion vo = new CentroFormacion();
+		CentroFormacion vo = null;
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -113,6 +113,7 @@ public class CentroFormacionDAO extends BaseDAO {
 			stmt.setString(1, idCentroFormacion);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
+				vo = new CentroFormacion();
 				vo.setIdCentroFormacion(rs.getString(1));
 				vo.setNombre(rs.getString(2));
 				vo.setUrlCentroFormacion(rs.getString(3));
