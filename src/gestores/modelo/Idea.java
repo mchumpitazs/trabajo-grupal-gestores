@@ -1,11 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gestores.modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -13,9 +11,11 @@ import java.util.Date;
  */
 public class Idea {
     
-    private int idIdea;
+	private int idIdea;
     private String titulo;
     private String descripcion;
+    private ArrayList<String> palabrasClave;
+    private String urlArchivo;
     private String referencia;
     private Date fechaCreacion;
     private Date fechaPublicacion;
@@ -32,89 +32,173 @@ public class Idea {
     // Una idea puede generar una o muchas reuniones
     private ArrayList<Reunion> reuniones;
 
-    // Constructor
-    
-    // Getters / Setters
-    
-    public int getIdIdea() {
-        return idIdea;
-    }
+	/**
+	 * @return the idIdea
+	 */
+	public int getIdIdea() {
+		return idIdea;
+	}
 
-    public void setIdIdea(int idIdea) {
-        this.idIdea = idIdea;
-    }
+	/**
+	 * @param idIdea the idIdea to set
+	 */
+	public void setIdIdea(int idIdea) {
+		this.idIdea = idIdea;
+	}
 
-    public String getTitulo() {
-        return titulo;
-    }
+	/**
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+	/**
+	 * @param titulo the titulo to set
+	 */
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	/**
+	 * @param descripcion the descripcion to set
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public String getReferencia() {
-        return referencia;
-    }
+	/**
+	 * @return the palabrasClave
+	 */
+	public List<String> getPalabrasClave() {
+		return palabrasClave;
+	}
 
-    public void setReferencia(String referencia) {
-        this.referencia = referencia;
-    }
+	/**
+	 * @param palabrasClave the palabrasClave to set
+	 */
+	public void setPalabrasClave(ArrayList<String> palabrasClave) {
+		this.palabrasClave = palabrasClave;
+	}
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
+	/**
+	 * @return the urlArchivo
+	 */
+	public String getUrlArchivo() {
+		return urlArchivo;
+	}
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
+	/**
+	 * @param urlArchivo the urlArchivo to set
+	 */
+	public void setUrlArchivo(String urlArchivo) {
+		this.urlArchivo = urlArchivo;
+	}
 
-    public Date getFechaPublicacion() {
-        return fechaPublicacion;
-    }
+	/**
+	 * @return the referencia
+	 */
+	public String getReferencia() {
+		return referencia;
+	}
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
-    }
+	/**
+	 * @param referencia the referencia to set
+	 */
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
 
-    public Usuario getUsuarioAsesor() {
-        return usuarioAsesor;
-    }
+	/**
+	 * @return the fechaCreacion
+	 */
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
 
-    public void setUsuarioAsesor(Usuario usuarioAsesor) {
-        this.usuarioAsesor = usuarioAsesor;
-    }
+	/**
+	 * @param fechaCreacion the fechaCreacion to set
+	 */
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
 
-    public Usuario getUsuarioEstudiante() {
-        return usuarioEstudiante;
-    }
+	/**
+	 * @return the fechaPublicacion
+	 */
+	public Date getFechaPublicacion() {
+		return fechaPublicacion;
+	}
 
-    public void setUsuarioEstudiante(Usuario usuarioEstudiante) {
-        this.usuarioEstudiante = usuarioEstudiante;
-    }
+	/**
+	 * @param fechaPublicacion the fechaPublicacion to set
+	 */
+	public void setFechaPublicacion(Date fechaPublicacion) {
+		this.fechaPublicacion = fechaPublicacion;
+	}
 
-    public TipoEstadoIdea getTipoEstado() {
-        return tipoEstado;
-    }
+	/**
+	 * @return the usuarioAsesor
+	 */
+	public Usuario getUsuarioAsesor() {
+		return usuarioAsesor;
+	}
 
-    public void setTipoEstado(TipoEstadoIdea tipoEstado) {
-        this.tipoEstado = tipoEstado;
-    }
+	/**
+	 * @param usuarioAsesor the usuarioAsesor to set
+	 */
+	public void setUsuarioAsesor(Usuario usuarioAsesor) {
+		this.usuarioAsesor = usuarioAsesor;
+	}
 
-    public ArrayList<Reunion> getReuniones() {
-        return reuniones;
-    }
+	/**
+	 * @return the usuarioEstudiante
+	 */
+	public Usuario getUsuarioEstudiante() {
+		return usuarioEstudiante;
+	}
 
-    public void setReuniones(ArrayList<Reunion> reuniones) {
-        this.reuniones = reuniones;
-    }
-    
+	/**
+	 * @param usuarioEstudiante the usuarioEstudiante to set
+	 */
+	public void setUsuarioEstudiante(Usuario usuarioEstudiante) {
+		this.usuarioEstudiante = usuarioEstudiante;
+	}
+
+	/**
+	 * @return the tipoEstado
+	 */
+	public TipoEstadoIdea getTipoEstado() {
+		return tipoEstado;
+	}
+
+	/**
+	 * @param tipoEstado the tipoEstado to set
+	 */
+	public void setTipoEstado(TipoEstadoIdea tipoEstado) {
+		this.tipoEstado = tipoEstado;
+	}
+
+	/**
+	 * @return the reuniones
+	 */
+	public ArrayList<Reunion> getReuniones() {
+		return reuniones;
+	}
+
+	/**
+	 * @param reuniones the reuniones to set
+	 */
+	public void setReuniones(ArrayList<Reunion> reuniones) {
+		this.reuniones = reuniones;
+	}
+
     
 }
