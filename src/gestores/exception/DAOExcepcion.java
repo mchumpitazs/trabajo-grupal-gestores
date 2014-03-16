@@ -1,5 +1,8 @@
 package gestores.exception;
 
+/**
+ * @author Harry Bravo.
+ */
 public class DAOExcepcion extends Exception {
 
 	private static final long serialVersionUID = 1L;
@@ -18,5 +21,5 @@ public class DAOExcepcion extends Exception {
 
 	public DAOExcepcion(Throwable arg0) {
 		super(arg0);
-	}	
+	}
 }

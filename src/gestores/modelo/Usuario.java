@@ -1,125 +1,119 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestores.modelo;
 
-import java.util.ArrayList;
+import gestores.enums.TipoDocumento;
+import gestores.enums.TipoUsuario;
 
 /**
- *
- * @author Lino Espinoza
+ * @author Harry Bravo.
  */
 public class Usuario {
-    
-    private int idUsuario;
-    private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private String sexo;
-    private String numeroDocumento;
-    private String numeroCelular;
-    private String email;
-    
-    // Un usuario puede tener una o muchas ideas
-    private ArrayList<Idea> ideas;
-    
-    // Un usuario puede tener un tipo de documento
-    private TipoDocumento tipoDocumento;
-    
-    // Un usuario puede tener un tipo de usuario
-    private TipoUsuario tipoUsuario;
-    
-    // Un usuario puede pertenecer a un centro de formacion
-    private CentroFormacion centroFormacion;
 
-    // Getters / Setters
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+	private Integer codigo;
+	private String nombre;
+	private String apellidoPaterno;
+	private String apellidoMaterno;
+	private String sexo;
+	private TipoDocumento tipoDocumento;
+	private String numeroDocumento;
+	private String email;
+	private String numeroCelular;
+	private String contrasenia;
+	private TipoUsuario tipoUsuario;
+	private CentroFormacion centroFormacion;
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public Integer getCodigo() {
+		return codigo;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
+	public String getApellidoPaterno() {
+		return apellidoPaterno;
+	}
 
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
+	public void setApellidoPaterno(String apellidoPaterno) {
+		this.apellidoPaterno = apellidoPaterno;
+	}
 
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
-    }
+	public String getApellidoMaterno() {
+		return apellidoMaterno;
+	}
 
-    public String getSexo() {
-        return sexo;
-    }
+	public void setApellidoMaterno(String apellidoMaterno) {
+		this.apellidoMaterno = apellidoMaterno;
+	}
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
+	public String getSexo() {
+		return sexo;
+	}
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
-    }
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
+	}
 
-    public String getNumeroCelular() {
-        return numeroCelular;
-    }
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
 
-    public void setNumeroCelular(String numeroCelular) {
-        this.numeroCelular = numeroCelular;
-    }
+	public String getNumeroDocumento() {
+		return numeroDocumento;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public ArrayList<Idea> getIdeas() {
-        return ideas;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setIdeas(ArrayList<Idea> ideas) {
-        this.ideas = ideas;
-    }
+	public String getNumeroCelular() {
+		return numeroCelular;
+	}
 
-    public TipoDocumento getTipoDocumento() {
-        return tipoDocumento;
-    }
+	public void setNumeroCelular(String numeroCelular) {
+		this.numeroCelular = numeroCelular;
+	}
 
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
+	public String getContrasenia() {
+		return contrasenia;
+	}
 
-    public CentroFormacion getCentroFormacion() {
-        return centroFormacion;
-    }
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
 
-    public void setCentroFormacion(CentroFormacion centroFormacion) {
-        this.centroFormacion = centroFormacion;
-    }
-    
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public CentroFormacion getCentroFormacion() {
+		return centroFormacion;
+	}
+
+	public void setCentroFormacion(CentroFormacion centroFormacion) {
+		this.centroFormacion = centroFormacion;
+	}
 }

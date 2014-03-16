@@ -1,67 +1,57 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestores.modelo;
+
+import gestores.enums.TipoCalificacion;
 
 import java.util.Date;
 
 /**
- *
- * @author Lino Espinoza
+ * @author Harry Bravo.
  */
 public class Reunion {
-    
-    private int idReunion;
-    private Date fechaReunion;
-    private String observacion;
-    private String calificacion;
-    
-    // Una reunion pertenece a una idea
-    private Idea idea;
 
-    // Constructor
-    
-    // Getters / Setters
-    
-    public int getIdReunion() {
-        return idReunion;
-    }
+	private Integer codigo;
+	private Idea idea;
+	private Date fechaReunion;
+	private String observacion;
+	private TipoCalificacion tipoCalificacion;
 
-    public void setIdReunion(int idReunion) {
-        this.idReunion = idReunion;
-    }
+	public Integer getCodigo() {
+		return codigo;
+	}
 
-    public Date getFechaReunion() {
-        return fechaReunion;
-    }
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
-    public void setFechaReunion(Date fechaReunion) {
-        this.fechaReunion = fechaReunion;
-    }
+	public Idea getIdea() {
+		return idea;
+	}
 
-    public String getObservacion() {
-        return observacion;
-    }
+	public void setIdea(Idea idea) {
+		this.idea = idea;
+	}
 
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
-    }
+	public Date getFechaReunion() {
+		return fechaReunion;
+	}
 
-    public String getCalificacion() {
-        return calificacion;
-    }
+	public void setFechaReunion(Date fechaReunion) {
+		this.fechaReunion = fechaReunion;
+	}
 
-    public void setCalificacion(String calificacion) {
-        this.calificacion = calificacion;
-    }
+	public String getObservacion() {
+		return observacion;
+	}
 
-    public Idea getIdea() {
-        return idea;
-    }
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
 
-    public void setIdea(Idea idea) {
-        this.idea = idea;
-    }
-     
+	public TipoCalificacion getTipoCalificacion() {
+		return tipoCalificacion;
+	}
+
+	public void setTipoCalificacion(TipoCalificacion tipoCalificacion) {
+		this.tipoCalificacion = tipoCalificacion;
+	}
 }

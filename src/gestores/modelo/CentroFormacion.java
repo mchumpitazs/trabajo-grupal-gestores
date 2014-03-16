@@ -1,27 +1,28 @@
 package gestores.modelo;
 
+import gestores.enums.TipoCentroFormacion;
+
 import java.util.List;
 
 /**
- * 
- * @author Lino Espinoza
+ * @author Harry Bravo.
  */
 public class CentroFormacion {
 
-	private String idCentroFormacion;
+	private String codigo;
 	private String nombre;
-	private String urlCentroFormacion;
-	private String urlLogo;
 	private TipoCentroFormacion tipoCentroFormacion;
-	private List<Factura> facturas;
+	private String url;
+	private String logo;
+	private PlanTarifario planTarifario;
+	private List<ReportePago> listaReportePagos;
 
-	// Getters / Setters
-	public String getIdCentroFormacion() {
-		return idCentroFormacion;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setIdCentroFormacion(String idCentroFormacion) {
-		this.idCentroFormacion = idCentroFormacion;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
@@ -32,22 +33,6 @@ public class CentroFormacion {
 		this.nombre = nombre;
 	}
 
-	public String getUrlCentroFormacion() {
-		return urlCentroFormacion;
-	}
-
-	public void setUrlCentroFormacion(String urlCentroFormacion) {
-		this.urlCentroFormacion = urlCentroFormacion;
-	}
-
-	public String getUrlLogo() {
-		return urlLogo;
-	}
-
-	public void setUrlLogo(String urlLogo) {
-		this.urlLogo = urlLogo;
-	}
-
 	public TipoCentroFormacion getTipoCentroFormacion() {
 		return tipoCentroFormacion;
 	}
@@ -56,11 +41,35 @@ public class CentroFormacion {
 		this.tipoCentroFormacion = tipoCentroFormacion;
 	}
 
-	public List<Factura> getFacturas() {
-		return facturas;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setFacturas(List<Factura> facturas) {
-		this.facturas = facturas;
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public PlanTarifario getPlanTarifario() {
+		return planTarifario;
+	}
+
+	public void setPlanTarifario(PlanTarifario planTarifario) {
+		this.planTarifario = planTarifario;
+	}
+
+	public List<ReportePago> getListaReportePagos() {
+		return listaReportePagos;
+	}
+
+	public void setListaReportePagos(List<ReportePago> listaReportePagos) {
+		this.listaReportePagos = listaReportePagos;
 	}
 }
