@@ -23,15 +23,14 @@ public class GestionCentroFormacion {
 		return dao.insertar(centroFormacion);
 	}
 
-	public CentroFormacion obtener(String idCentroFormacion)
-			throws DAOExcepcion {
+	public CentroFormacion obtener(String codigo) throws DAOExcepcion {
 		CentroFormacionDAO dao = new CentroFormacionDAO();
-		return dao.obtener(idCentroFormacion);
+		return dao.obtener(codigo);
 	}
 
-	public void eliminar(String idCentroFormacion) throws DAOExcepcion {
+	public void eliminar(String codigo) throws DAOExcepcion {
 		CentroFormacionDAO dao = new CentroFormacionDAO();
-		dao.eliminar(idCentroFormacion);
+		dao.eliminar(codigo);
 	}
 
 	public CentroFormacion actualizar(CentroFormacion centroFormacion)

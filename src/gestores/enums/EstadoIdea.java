@@ -1,5 +1,8 @@
 package gestores.enums;
 
+/**
+ * @author Harry Bravo.
+ */
 public enum EstadoIdea {
 
 	Creada("CRE"), Publicada("PUB"), Aprobada("APR"), Rechazada("REC");

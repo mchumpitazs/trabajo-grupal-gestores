@@ -25,9 +25,9 @@ public class CentroFormacionDAO extends BaseDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String condicion = "AND cfo.Co_Tipo_Centro_Formacion = ?";
-			if (centroFormacion.getTipoCentroFormacion() == null) {
-				condicion = "";
+			String condicion = "";
+			if (centroFormacion.getTipoCentroFormacion() != null) {
+				condicion = "AND cfo.Co_Tipo_Centro_Formacion = ?";
 			}
 			String query = "SELECT cfo.Co_Centro_Formacion, cfo.No_Centro_Formacion, cfo.Co_Tipo_Centro_Formacion, cfo.Tx_Url, cfo.Tx_Logo, pta.No_Plan_Tarifario "
 					+ "FROM CENTRO_FORMACION cfo INNER JOIN PLAN_TARIFARIO pta "

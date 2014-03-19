@@ -22,12 +22,11 @@ public class GestionCentroFormacionTest {
 
 			CentroFormacion centroFormacion = new CentroFormacion();
 			centroFormacion.setCodigo("10804050208");
-			centroFormacion
-					.setNombre("Instituto Superior Tecnológico Cibertec");
+			centroFormacion.setNombre("Instituto Superior Tecnologico IDAT");
 			centroFormacion
 					.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
-			centroFormacion.setUrl("http://www.cibertec.edu.pe");
-			centroFormacion.setLogo("/images/logo/logoCibertec.png");
+			centroFormacion.setUrl("http://www.idat.edu.pe");
+			centroFormacion.setLogo("/images/logo/logoIdat.png");
 			centroFormacion.setPlanTarifario(planTarifario);
 
 			CentroFormacion vo = negocio.insertar(centroFormacion);
@@ -58,11 +57,11 @@ public class GestionCentroFormacionTest {
 
 			CentroFormacion centroFormacion = new CentroFormacion();
 			centroFormacion.setCodigo("10804050208");
-			centroFormacion.setNombre("Instituto Cibertec");
+			centroFormacion.setNombre("Instituto IDAT");
 			centroFormacion
 					.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
-			centroFormacion.setUrl("http://www.cibertec.edu.pe/index.jsp");
-			centroFormacion.setLogo("/images/logo/logoCibertec.png");
+			centroFormacion.setUrl("http://www.idat.edu.pe/index.jsp");
+			centroFormacion.setLogo("/images/logo/logoIdat.png");
 			centroFormacion.setPlanTarifario(planTarifario);
 
 			CentroFormacion vo = negocio.actualizar(centroFormacion);
