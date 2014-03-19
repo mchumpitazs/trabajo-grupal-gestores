@@ -8,6 +8,9 @@ import java.util.Locale;
 
 public class FechaUtil {
 
+	private FechaUtil() {
+	}
+
 	public static Date establecerFecha(int dia, int mes, int anio) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.DAY_OF_MONTH, dia);
@@ -43,9 +46,5 @@ public class FechaUtil {
 
 	public static java.sql.Date convertirSqlDate(Date fecha) {
 		return new java.sql.Date(fecha.getTime());
-	}
-
-	public static Date convertirUtilDate(java.sql.Date fecha) {
-		return new Date(fecha.getTime());
 	}
 }

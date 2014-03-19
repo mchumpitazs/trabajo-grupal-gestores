@@ -1,5 +1,8 @@
 package gestores.enums;
 
+/**
+ * @author Harry Bravo.
+ */
 public enum TipoUsuario {
 
 	Estudiante("EST"), Docente("DOC"), Evaluador("EVA"), Administrador("ADM");

@@ -9,6 +9,9 @@ import java.sql.SQLException;
  */
 public class ConexionBD {
 
+	private ConexionBD() {
+	}
+
 	public static Connection obtenerConexion() throws SQLException {
 
 		Connection con = null;

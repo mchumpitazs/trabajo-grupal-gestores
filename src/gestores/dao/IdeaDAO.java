@@ -25,7 +25,7 @@ public class IdeaDAO extends BaseDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String query = "SELECT ide.No_Titulo, ide.Tx_Archivo, est.No_Usuario AS No_Estudiante, est.No_Ape_Paterno AS No_Ape_Paterno_Est, est.No_Ape_Materno AS No_Ape_Materno_Est, ase.No_Usuario AS No_Asesor, ase.No_Ape_Paterno AS No_Ape_Paterno_Ase, ase.No_Ape_Materno AS No_Ape_Materno_Ase, ide.Co_Estado, ide.Fe_Creacion "
+			String query = "SELECT ide.Co_Idea, ide.No_Titulo, ide.Tx_Archivo, est.No_Usuario AS No_Estudiante, est.No_Ape_Paterno AS No_Ape_Paterno_Est, est.No_Ape_Materno AS No_Ape_Materno_Est, ase.No_Usuario AS No_Asesor, ase.No_Ape_Paterno AS No_Ape_Paterno_Ase, ase.No_Ape_Materno AS No_Ape_Materno_Ase, ide.Co_Estado, ide.Fe_Creacion "
 					+ "FROM IDEA ide INNER JOIN USUARIO est "
 					+ "ON (ide.Co_Estudiante = est.Co_Usuario) "
 					+ "LEFT JOIN USUARIO ase "
@@ -43,23 +43,24 @@ public class IdeaDAO extends BaseDAO {
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				Idea vo = new Idea();
-				vo.setTitulo(rs.getString(1));
-				vo.setArchivo(rs.getString(2));
+				vo.setCodigo(rs.getInt(1));
+				vo.setTitulo(rs.getString(2));
+				vo.setArchivo(rs.getString(3));
 
 				Usuario estudiante = new Usuario();
-				estudiante.setNombre(rs.getString(3));
-				estudiante.setApellidoPaterno(rs.getString(4));
-				estudiante.setApellidoMaterno(rs.getString(5));
+				estudiante.setNombre(rs.getString(4));
+				estudiante.setApellidoPaterno(rs.getString(5));
+				estudiante.setApellidoMaterno(rs.getString(6));
 				vo.setEstudiante(estudiante);
 
 				Usuario asesor = new Usuario();
-				asesor.setNombre(rs.getString(6));
-				asesor.setApellidoPaterno(rs.getString(7));
-				asesor.setApellidoMaterno(rs.getString(8));
+				asesor.setNombre(rs.getString(7));
+				asesor.setApellidoPaterno(rs.getString(8));
+				asesor.setApellidoMaterno(rs.getString(9));
 				vo.setAsesor(asesor);
 
-				vo.setEstadoIdea(EstadoIdea.getEstadoIdea(rs.getString(9)));
-				vo.setFechaCreacion(rs.getDate(10));
+				vo.setEstadoIdea(EstadoIdea.getEstadoIdea(rs.getString(10)));
+				vo.setFechaCreacion(rs.getDate(11));
 				lista.add(vo);
 			}
 		} catch (SQLException e) {
