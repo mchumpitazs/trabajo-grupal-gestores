@@ -1,8 +1,9 @@
 package gestores.test;
 
+import gestores.enums.TipoCentroFormacion;
 import gestores.exception.DAOExcepcion;
 import gestores.modelo.CentroFormacion;
-import gestores.modelo.TipoCentroFormacion;
+import gestores.modelo.PlanTarifario;
 import gestores.negocio.GestionCentroFormacion;
 
 import java.util.List;
@@ -15,21 +16,22 @@ public class GestionCentroFormacionTest {
 	@Test
 	public void insertarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
 		try {
-			TipoCentroFormacion tipoCentroFormacion = new TipoCentroFormacion();
-			tipoCentroFormacion.setIdTipoCentroFormacion("U");
+			PlanTarifario planTarifario = new PlanTarifario();
+			planTarifario.setCodigo(2);
 
 			CentroFormacion centroFormacion = new CentroFormacion();
-			centroFormacion.setIdCentroFormacion("1");
-			centroFormacion.setNombre("UPC");
-			centroFormacion.setUrlCentroFormacion("http://www.upc.edu.pe");
-			centroFormacion.setUrlLogo("images/logoUPC.png");
-			centroFormacion.setTipoCentroFormacion(tipoCentroFormacion);
+			centroFormacion.setCodigo("10804050208");
+			centroFormacion
+					.setNombre("Instituto Superior Tecnológico Cibertec");
+			centroFormacion
+					.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
+			centroFormacion.setUrl("http://www.cibertec.edu.pe");
+			centroFormacion.setLogo("/images/logo/logoCibertec.png");
+			centroFormacion.setPlanTarifario(planTarifario);
 
 			CentroFormacion vo = negocio.insertar(centroFormacion);
-			System.out
-					.println("Se insertó el id: " + vo.getIdCentroFormacion());
+			System.out.println("Se insertó el id: " + vo.getCodigo());
 		} catch (DAOExcepcion e) {
 			Assert.fail("Fallo la inserción: " + e.getMessage());
 		}
@@ -38,9 +40,9 @@ public class GestionCentroFormacionTest {
 	@Test
 	public void obtenerTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
 		try {
-			CentroFormacion vo = negocio.obtener("1");
+			String codigo = "10804050208";
+			CentroFormacion vo = negocio.obtener(codigo);
 			Assert.assertNotNull(vo);
 		} catch (DAOExcepcion e) {
 			Assert.fail("Fallo la obtención: " + e.getMessage());
@@ -50,23 +52,21 @@ public class GestionCentroFormacionTest {
 	@Test
 	public void actualizarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
 		try {
-			TipoCentroFormacion tipoCentroFormacion = new TipoCentroFormacion();
-			tipoCentroFormacion.setIdTipoCentroFormacion("U");
+			PlanTarifario planTarifario = new PlanTarifario();
+			planTarifario.setCodigo(3);
 
 			CentroFormacion centroFormacion = new CentroFormacion();
-			centroFormacion.setIdCentroFormacion("1");
+			centroFormacion.setCodigo("10804050208");
+			centroFormacion.setNombre("Instituto Cibertec");
 			centroFormacion
-					.setNombre("Universidad Peruana de Ciencias Aplicadas");
-			centroFormacion.setUrlCentroFormacion("http://www.upc.edu.pe");
-			centroFormacion.setUrlLogo("images/logoUPC.png");
-			centroFormacion.setTipoCentroFormacion(tipoCentroFormacion);
+					.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
+			centroFormacion.setUrl("http://www.cibertec.edu.pe/index.jsp");
+			centroFormacion.setLogo("/images/logo/logoCibertec.png");
+			centroFormacion.setPlanTarifario(planTarifario);
 
 			CentroFormacion vo = negocio.actualizar(centroFormacion);
-			System.out.println("Se actualizó el id: "
-					+ vo.getIdCentroFormacion());
-
+			System.out.println("Se actualizó el id: " + vo.getCodigo());
 		} catch (DAOExcepcion e) {
 			Assert.fail("Falló la actualización: " + e.getMessage());
 		}
@@ -75,35 +75,17 @@ public class GestionCentroFormacionTest {
 	@Test
 	public void listarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
 		try {
-			List<CentroFormacion> listado = negocio.listar();
-			System.out.println("Total de registros: " + listado.size());
-
-			for (CentroFormacion centroFormacion : listado) {
-				System.out.println(centroFormacion.getNombre());
-			}
-			Assert.assertTrue(listado.size() > 0);
-		} catch (DAOExcepcion e) {
-			Assert.fail("Falló el listado: " + e.getMessage());
-		}
-	}
-
-	@Test
-	public void buscarTodosTest() {
-		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
-		try {
-			TipoCentroFormacion tipoCentroFormacion = new TipoCentroFormacion();
-			tipoCentroFormacion.setIdTipoCentroFormacion("0");
-
 			CentroFormacion centroFormacion = new CentroFormacion();
 			centroFormacion.setNombre("");
-			List<CentroFormacion> listado = negocio.buscar(centroFormacion);
+			centroFormacion.setTipoCentroFormacion(null);
+
+			List<CentroFormacion> listado = negocio.listar(centroFormacion);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (CentroFormacion vo : listado) {
-				System.out.println(vo.getNombre());
+				System.out.println(vo.getNombre() + " - "
+						+ vo.getTipoCentroFormacion().toString());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -114,19 +96,18 @@ public class GestionCentroFormacionTest {
 	@Test
 	public void buscarPorNombreTipoTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
 		try {
-			TipoCentroFormacion tipoCentroFormacion = new TipoCentroFormacion();
-			tipoCentroFormacion.setIdTipoCentroFormacion("U");
-
 			CentroFormacion centroFormacion = new CentroFormacion();
-			centroFormacion.setNombre("Unive");
-			centroFormacion.setTipoCentroFormacion(tipoCentroFormacion);
-			List<CentroFormacion> listado = negocio.buscar(centroFormacion);
+			centroFormacion.setNombre("Cibertec");
+			centroFormacion
+					.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
+
+			List<CentroFormacion> listado = negocio.listar(centroFormacion);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (CentroFormacion vo : listado) {
-				System.out.println(vo.getNombre());
+				System.out.println(vo.getNombre() + " - "
+						+ vo.getTipoCentroFormacion().toString());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -137,19 +118,18 @@ public class GestionCentroFormacionTest {
 	@Test
 	public void buscarPorTipoTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
-
 		try {
-			TipoCentroFormacion tipoCentroFormacion = new TipoCentroFormacion();
-			tipoCentroFormacion.setIdTipoCentroFormacion("U");
-
 			CentroFormacion centroFormacion = new CentroFormacion();
 			centroFormacion.setNombre("");
-			centroFormacion.setTipoCentroFormacion(tipoCentroFormacion);
-			List<CentroFormacion> listado = negocio.buscar(centroFormacion);
+			centroFormacion
+					.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
+
+			List<CentroFormacion> listado = negocio.listar(centroFormacion);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (CentroFormacion vo : listado) {
-				System.out.println(vo.getNombre());
+				System.out.println(vo.getNombre() + " - "
+						+ vo.getTipoCentroFormacion().toString());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -161,9 +141,10 @@ public class GestionCentroFormacionTest {
 	public void eliminarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
-			negocio.eliminar("1");
-			CentroFormacion nuevo = negocio.obtener("1");
-			Assert.assertEquals(null, nuevo.getNombre());
+			String codigo = "10804050208";
+			negocio.eliminar(codigo);
+			CentroFormacion vo = negocio.obtener(codigo);
+			Assert.assertNull(null, vo);
 		} catch (DAOExcepcion e) {
 			Assert.fail("Falló la eliminición: " + e.getMessage());
 		}

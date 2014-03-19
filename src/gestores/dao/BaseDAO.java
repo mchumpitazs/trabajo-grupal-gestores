@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author Harry Bravo.
+ */
 public class BaseDAO {
 
 	protected void cerrarConexion(Connection con) throws RuntimeException {
@@ -50,4 +53,3 @@ public class BaseDAO {
 		}
 	}
 }
-

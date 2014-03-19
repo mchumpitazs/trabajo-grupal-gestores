@@ -7,15 +7,14 @@ import gestores.modelo.CentroFormacion;
 import java.util.List;
 
 /**
- * 
- * @author Harry Bravo
+ * @author Harry Bravo.
  */
 public class GestionCentroFormacion {
 
-	public List<CentroFormacion> buscar(CentroFormacion centroFormacion)
+	public List<CentroFormacion> listar(CentroFormacion centroFormacion)
 			throws DAOExcepcion {
 		CentroFormacionDAO dao = new CentroFormacionDAO();
-		return dao.buscar(centroFormacion);
+		return dao.listar(centroFormacion);
 	}
 
 	public CentroFormacion insertar(CentroFormacion centroFormacion)
@@ -39,10 +38,5 @@ public class GestionCentroFormacion {
 			throws DAOExcepcion {
 		CentroFormacionDAO dao = new CentroFormacionDAO();
 		return dao.actualizar(centroFormacion);
-	}
-
-	public List<CentroFormacion> listar() throws DAOExcepcion {
-		CentroFormacionDAO dao = new CentroFormacionDAO();
-		return dao.listar();
 	}
 }
