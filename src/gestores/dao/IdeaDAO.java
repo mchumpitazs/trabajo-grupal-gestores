@@ -6,12 +6,14 @@ import gestores.exception.DAOExcepcion;
 import gestores.modelo.Idea;
 import gestores.modelo.Usuario;
 import gestores.util.ConexionBD;
+import gestores.util.FechaUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -319,5 +321,89 @@ public class IdeaDAO extends BaseDAO {
 			this.cerrarConexion(con);
 		}
 		return lista;
+	}
+
+	public List<Idea> listaIdeasporCF(Usuario evaluador, Idea ideab, Date fecha_ini, Date fecha_fin) throws DAOExcepcion {
+		/**
+		 * @author Marco Chumpitaz.
+		 */
+		List<Idea> lista = new ArrayList<Idea>();
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			String condicion = "";
+								
+			if (ideab.getTitulo() != null){
+				condicion = "and  id1.No_Titulo like ?";
+						}
+			if (ideab.getDescripcion() != null){
+				condicion += "and id1.Tx_Descripcion like ?";
+						}
+			if (ideab.getPalabrasClave() != null){
+				condicion += "and id1.Tx_Palabras_Clave like ?";
+						}
+			if (ideab.getEstadoIdea() != null){
+				condicion += "and id1.Co_Estado like ?";
+						}
+			if (fecha_ini != null && fecha_fin != null) {
+				condicion += "AND DATE(id1.Fe_Creacion) BETWEEN DATE(?) AND DATE(?) ";
+			}
+			
+			String query = "select No_Titulo,Tx_Descripcion,Tx_Palabras_Clave,Tx_Archivo,Co_Estado,Fe_Creacion," 
+							+"No_Usuario, No_Ape_Paterno, No_Ape_Materno "
+							+"from idea id1 inner join usuario us1 "
+							+"on id1.Co_Estudiante = us1.Co_Usuario "
+							+"where us1.Co_Centro_Formacion like ?" + condicion;
+														
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareStatement(query);
+		
+			stmt.setString(1,  "%" + evaluador.getCentroFormacion() + "%");
+			stmt.setString(2,  "%" + ideab.getTitulo() + "%");
+			stmt.setString(3,  "%" + ideab.getDescripcion() + "%");
+			stmt.setString(4,  "%" + ideab.getPalabrasClave() + "%");
+			stmt.setString(5,  "%" + ideab.getEstadoIdea().getCodigo() + "%");
+			
+			if (fecha_ini != null && fecha_fin != null) {
+				stmt.setDate(6, FechaUtil.convertirSqlDate(fecha_ini));
+				stmt.setDate(7, FechaUtil.convertirSqlDate(fecha_fin));
+			}
+			
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				Idea vo = new Idea();
+				vo.setTitulo(rs.getString(1));
+				vo.setDescripcion(rs.getString(2));
+				vo.setPalabrasClave(rs.getString(3));
+				vo.setArchivo(rs.getString(4));
+				vo.setEstadoIdea(EstadoIdea.getEstadoIdea(rs.getString(5)));
+				vo.setFechaCreacion(rs.getDate(6));
+	
+				Usuario estudiante = new Usuario();
+				estudiante.setNombre(rs.getString(7));
+				estudiante.setApellidoPaterno(rs.getString(8));
+				estudiante.setApellidoMaterno(rs.getString(9));
+				vo.setEstudiante(estudiante);
+	
+				//Usuario asesor = new Usuario();
+				//asesor.setNombre(rs.getString(7));
+				//asesor.setApellidoPaterno(rs.getString(8));
+				//asesor.setApellidoMaterno(rs.getString(9));
+				//vo.setAsesor(null);
+		
+				
+				lista.add(vo);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarResultSet(rs);
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return lista;
+		
 	}
 }

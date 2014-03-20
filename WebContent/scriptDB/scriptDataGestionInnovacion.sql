@@ -45,16 +45,28 @@ INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_E
 VALUES ('Aula Virtual', 'Tener clases no presenciales', 'online,cursos,foro,evaluacion', '/archivo/upload/aulaVirtual.docx', 2, 'CRE', NOW(), NULL, NULL);
 
 INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
-VALUES ('Matricula Online', 'Matricularse en la comodidad de su casa', 'online,horario,matricula,cursos', '/archivo/upload/matriculaOnline.docx', 2, 'PUB', NOW(), NOW(), NULL);
+VALUES ('Matricula Online', 'Matricularse en la comodidad de su casa', 'online,horario,matricula,cursos', '/archivo/upload/matriculaOnline.docx', 3, 'PUB', NOW(), NOW(), NULL);
 
 INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
-VALUES ('Encuesta de Alumnos Online', 'Encuesta online de los alumnos con respecto a la calidad educativa', 'online,evaluacion,educacion,calidad', '/archivo/upload/encuestaAlumnoOnline.docx', 2, 'APR', NOW(), NOW(), NULL);
+VALUES ('Encuesta de Alumnos Online', 'Encuesta online de los alumnos con respecto a la calidad educativa', 'online,evaluacion,educacion,calidad', '/archivo/upload/encuestaAlumnoOnline.docx', 4, 'APR', NOW(), NOW(), NULL);
 
 INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
 VALUES ('Ingles Online', 'Ingles en la comodidad de su casa', 'online,horario,ingles,examenes', '/archivo/upload/inglesOnline.docx', 2, 'REC', NOW(), NOW(), NULL);
 
 INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
-VALUES ('Conferencia Online', 'Conferencia online para estudiantes', 'online,conferencia,educacion,temas', '/archivo/upload/conferenciaOnline.docx', 2, 'APR', NOW(), NOW(), 5);
+VALUES ('Conferencia Online', 'Conferencia online para estudiantes', 'online,conferencia,educacion,temas', '/archivo/upload/conferenciaOnline.docx', 4, 'APR', NOW(), NOW(), 5);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Proquest','Como aprovechar el uso de la biblioteca virtual','biblioteca,libros,online,busqueda','/archivo/upload/BibliotecaVirtual.docx',3,'CRE','2014-03-19 03:57:07',NULL,NULL);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('EBSCO','Optimizar la busqueda de recursos academicos onlines','revistas,recursos,online,busqueda','/archivo/upload/BusquedaRecusrosOnline.docx',4,'CRE','2014-03-19 03:57:07',NULL,NULL);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Organiza tu tiempo','Taller Online para organizar mejor el tiempo','tiempo,organizacion,planeamiento,online','/archivo/upload/TallerTiempoOnline.docx',2,'APR','2014-03-19 03:57:07','2014-03-19 03:57:07',6);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Aprueba tus Examenes Online','Tutorial con tecnicas de estudio para rendir adecuadamente los examenes online','examenes,online,aprobar,tecnicas','/archivo/upload/ApruebaExamenesOnline.docx',3,'REC','2014-03-19 03:57:07','2014-03-19 03:57:07',7);
 
 -- USUARIO PERMITIDO
 INSERT INTO USUARIO_PERMITIDO (Co_Usuario, Co_Idea, Qt_Puntaje)
