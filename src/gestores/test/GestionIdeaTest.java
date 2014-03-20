@@ -60,14 +60,14 @@ public class GestionIdeaTest {
 /**
  * @author Marco Ch.
  */
-public void listarIdeasporCentroInformacionEvaluadoryCondicionesTest() {
+public void listarIdeasporCF_Eval_CondTest() {
 	GestionIdea negocio = new GestionIdea();
 	try {
 		Date fechaInicio = null;
 		Date fechaFin = null;
 
 		CentroFormacion centroFormacion = new CentroFormacion();
-		centroFormacion.setCodigo("10406048417");
+		centroFormacion.setCodigo("10334522659");
 			
 		Usuario evaluador = new Usuario();
 		evaluador.setCentroFormacion(centroFormacion);
@@ -80,15 +80,15 @@ public void listarIdeasporCentroInformacionEvaluadoryCondicionesTest() {
 			
 	
 		List<Idea> listado = negocio.listaIdeasporCF(evaluador, idea, fechaInicio, fechaFin);
-		//System.out.println("Total de registros: " + listado.size());
+		System.out.println("Total de registros: " + listado.size());
 
 		for (Idea vo : listado) {
 			System.out.println(vo.getTitulo() + " | "
 					+ vo.getDescripcion() +  " | "
 					+ vo.getPalabrasClave() + " | "
 					+ vo.getArchivo() + " | "
-					+ vo.getEstudiante().getApellidoPaterno() + " | "
-					+ vo.getEstudiante().getApellidoMaterno() + " | "
+					+ vo.getEstudiante().getApellidoPaterno()
+					+ vo.getEstudiante().getApellidoMaterno() + ", "
 					+ vo.getEstudiante().getNombre() + " | "
 					+ vo.getEstadoIdea().getCodigo() + " | "
 					+ vo.getFechaCreacion());
