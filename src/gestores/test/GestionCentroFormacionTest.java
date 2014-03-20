@@ -149,4 +149,25 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
+	@Test
+	public void listarCFparaPago(){
+		GestionCentroFormacion negocio = new GestionCentroFormacion();
+		try {
+			CentroFormacion centroFormacion = new CentroFormacion();
+			centroFormacion.setCodigo("10334522659");
+			centroFormacion.setTipoCentroFormacion(null);
+
+			List<CentroFormacion> listado = negocio.listar(centroFormacion);
+			System.out.println("Total de registros: " + listado.size());
+
+			for (CentroFormacion vo : listado) {
+				System.out.println(vo.getNombre() + " - "
+						+ vo.getTipoCentroFormacion().toString());
+			}
+			Assert.assertTrue(listado.size() > 0);
+		} catch (DAOExcepcion e) {
+			Assert.fail("Falló la búsqueda: " + e.getMessage());
+		}
+		
+	}
 }
