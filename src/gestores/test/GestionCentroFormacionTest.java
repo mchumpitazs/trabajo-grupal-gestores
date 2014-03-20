@@ -148,4 +148,5 @@ public class GestionCentroFormacionTest {
 			Assert.fail("Falló la eliminición: " + e.getMessage());
 		}
 	}
+
 }

@@ -191,4 +191,40 @@ public class CentroFormacionDAO extends BaseDAO {
 		}
 		return vo;
 	}
+
+	public List<String> listadeCFparaPago() throws DAOExcepcion{
+		List<String> lista = new ArrayList<String>();
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			String registroX = "";
+			String query = "SELECT cf.No_Centro_Formacion, cf.Co_Tipo_Centro_Formacion, cf.No_Plan_Tarifario,"
+						+	"(Ss_Precio_Servicio + (sel2.Total_Ideas * Ss_Precio_Tarifa)) Monto_a_Pagar "
+						+	"FROM centro_formacion cf inner join plan_tarifario pt "
+						+   "on (cf.Co_Plan_Tarifario=pt.Co_Plan_Tarifario) "
+						+	"left join (SELECT id4.Co_Centro_Formacion, count(*) Tot"
+						+	" FROM idea id4 inner join usuario us4 on id4.Co_Estudiante=us4.Co_Usuario "
+						+	"group by us4.Co_Centro_Formacion) sel2 "
+						+	"on (cf.Co_Centro_Formacion= sel2.Co_Centro_Formacion)";
+			
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				registroX = rs.getString(1) + rs.getString(2) + rs.getString(3) + rs.getString(4);     
+				lista.add (registroX) ;
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarResultSet(rs);
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return lista;
+		
+	}
 }
