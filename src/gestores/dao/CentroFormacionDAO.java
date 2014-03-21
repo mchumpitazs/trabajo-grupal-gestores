@@ -192,8 +192,11 @@ public class CentroFormacionDAO extends BaseDAO {
 		return vo;
 	}
 
-	public List<String> listadeCFparaPago() throws DAOExcepcion{
-		List<String> lista = new ArrayList<String>();
+	public ArrayList<String> listarCFparaPago() throws DAOExcepcion{
+		/**
+		 * @author Marco Chumpitaz.
+		 */
+		ArrayList<String> lista = new ArrayList<String>();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -213,7 +216,7 @@ public class CentroFormacionDAO extends BaseDAO {
 			
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				registroX = rs.getString(1) + rs.getString(2) + rs.getString(3) + rs.getString(4);     
+				registroX = rs.getString(1) + " | " + rs.getString(2) +  " | " + rs.getString(3) +  " | " + rs.getString(4);     
 				lista.add (registroX) ;
 			}
 		} catch (SQLException e) {

@@ -6,6 +6,7 @@ import gestores.modelo.CentroFormacion;
 import gestores.modelo.PlanTarifario;
 import gestores.negocio.GestionCentroFormacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -153,14 +154,12 @@ public class GestionCentroFormacionTest {
 	public void listarCFparaPago(){
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
-			CentroFormacion centroFormacion = new CentroFormacion();
-			centroFormacion.setCodigo("10334522659");
-			centroFormacion.setTipoCentroFormacion(null);
-
-			List<CentroFormacion> listado = negocio.listar(centroFormacion);
+			ArrayList listado = new ArrayList<>(); 
+			listado.add(negocio.listaCFparaPago());
+			
 			System.out.println("Total de registros: " + listado.size());
 
-			for (CentroFormacion vo : listado) {
+			while (listado.c) {
 				System.out.println(vo.getNombre() + " - "
 						+ vo.getTipoCentroFormacion().toString());
 			}
