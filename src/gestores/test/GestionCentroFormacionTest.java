@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class GestionCentroFormacionTest {
 
-	@Test
+	//@Test
 	public void insertarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -37,7 +37,7 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void obtenerTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -49,7 +49,7 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void actualizarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -72,7 +72,7 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void listarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -93,7 +93,7 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void buscarPorNombreTipoTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -115,7 +115,7 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void buscarPorTipoTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -137,7 +137,7 @@ public class GestionCentroFormacionTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void eliminarTest() {
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		try {
@@ -159,13 +159,13 @@ public class GestionCentroFormacionTest {
 			
 			System.out.println("Total de registros: " + listado.size());
 
-			while (listado.c) {
-				System.out.println(vo.getNombre() + " - "
-						+ vo.getTipoCentroFormacion().toString());
-			}
+			//while (listado.c) {
+			//	System.out.println(vo.getNombre() + " - "
+			//			+ vo.getTipoCentroFormacion().toString());
+			//}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
-			Assert.fail("Falló la búsqueda: " + e.getMessage());
+			Assert.fail("Falló la lista: " + e.getMessage());
 		}
 		
 	}

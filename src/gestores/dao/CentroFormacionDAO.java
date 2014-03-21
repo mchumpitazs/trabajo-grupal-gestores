@@ -202,11 +202,11 @@ public class CentroFormacionDAO extends BaseDAO {
 		ResultSet rs = null;
 		try {
 			String registroX = "";
-			String query = "SELECT cf.No_Centro_Formacion, cf.Co_Tipo_Centro_Formacion, cf.No_Plan_Tarifario,"
-						+	"(Ss_Precio_Servicio + (sel2.Total_Ideas * Ss_Precio_Tarifa)) Monto_a_Pagar "
+			String query = "SELECT cf.No_Centro_Formacion, cf.Co_Tipo_Centro_Formacion, pt.No_Plan_Tarifario,"
+						+	"(pt.Ss_Precio_Servicio + (sel2.Total_Ideas * pt.Ss_Precio_Tarifa)) Monto_a_Pagar "
 						+	"FROM centro_formacion cf inner join plan_tarifario pt "
 						+   "on (cf.Co_Plan_Tarifario=pt.Co_Plan_Tarifario) "
-						+	"left join (SELECT id4.Co_Centro_Formacion, count(*) Tot"
+						+	"left join (SELECT us4.Co_Centro_Formacion, count(*) Total_Ideas"
 						+	" FROM idea id4 inner join usuario us4 on id4.Co_Estudiante=us4.Co_Usuario "
 						+	"group by us4.Co_Centro_Formacion) sel2 "
 						+	"on (cf.Co_Centro_Formacion= sel2.Co_Centro_Formacion)";
