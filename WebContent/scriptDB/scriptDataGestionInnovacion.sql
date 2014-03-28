@@ -15,6 +15,9 @@ VALUES ('10406048417', 'Universidad Peruana de Ciencias Aplicadas', 'UNI', 'http
 INSERT INTO CENTRO_FORMACION (Co_Centro_Formacion, No_Centro_Formacion, Co_Tipo_Centro_Formacion, Tx_Url, Tx_Logo, Co_Plan_Tarifario)
 VALUES ('10334522659', 'Instituto Superior Tecnologico Cibertec', 'INS', 'http://www.cibertec.edu.pe', '/images/upload/logo/logoCibertec.png', 2);
 
+INSERT INTO CENTRO_FORMACION (Co_Centro_Formacion, No_Centro_Formacion, Co_Tipo_Centro_Formacion, Tx_Url, Tx_Logo, Co_Plan_Tarifario)
+VALUES ('10804050208','Instituto Superior Tecnologico IDAT','INS','http://www.idat.edu.pe','/images/logo/logoIdat.png',1);
+
 -- USUARIO
 INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
 VALUES ('Harry', 'Bravo', 'Coronel', 'M', 'DNI', '40604841', 'hbravocoronel@gmail.com', '962329330', 'admin', 'ADM', NULL);
@@ -123,3 +126,23 @@ VALUES (4, 4, 2);
 
 INSERT INTO USUARIO_PERMITIDO (Co_Usuario, Co_Idea, Qt_Puntaje)
 VALUES (6, 4, 2);
+
+--REPORTE DE PAGO
+
+INSERT INTO reporte_pago (`Fe_Anio_Pago`, `Fe_Mes_Pago`,`Co_Centro_Formacion`,`Co_Plan_Tarifario`,`Qt_Ideas`,`Ss_Monto_Mensual`)
+VALUES( 2014,'Enero','10334522659','2',2,150.00);
+
+INSERT INTO reporte_pago (`Fe_Anio_Pago`,`Fe_Mes_Pago`,`Co_Centro_Formacion`,`Co_Plan_Tarifario`,`Qt_Ideas`,`Ss_Monto_Mensual`)
+VALUES( 2014,'Febrero','10334522659','2',5,350.00);
+
+INSERT INTO reporte_pago (`Fe_Anio_Pago`,`Fe_Mes_Pago`,`Co_Centro_Formacion`,`Co_Plan_Tarifario`,`Qt_Ideas`,`Ss_Monto_Mensual`)
+VALUES( 2014,'Marzo','10334522659','2',3,200.00);
+
+INSERT INTO reporte_pago (`Fe_Anio_Pago`,`Fe_Mes_Pago`,`Co_Centro_Formacion`,`Co_Plan_Tarifario`,`Qt_Ideas`,`Ss_Monto_Mensual`)
+VALUES( 2014,'Enero','10406048417','1',2,220.00);
+
+INSERT INTO reporte_pago(`Fe_Anio_Pago`,`Fe_Mes_Pago`,`Co_Centro_Formacion`,`Co_Plan_Tarifario`,`Qt_Ideas`,`Ss_Monto_Mensual`)
+VALUES( 2014,'Febrero','10406048417','2',15,500.00);
+
+INSERT INTO reporte_pago(`Fe_Anio_Pago`,`Fe_Mes_Pago`,`Co_Centro_Formacion`,`Co_Plan_Tarifario`,`Qt_Ideas`,`Ss_Monto_Mensual`)
+VALUES( 2014,'Marzo','10406048417','1',6,600.00);
