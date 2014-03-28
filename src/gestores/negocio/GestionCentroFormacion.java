@@ -38,12 +38,4 @@ public class GestionCentroFormacion {
 		CentroFormacionDAO dao = new CentroFormacionDAO();
 		return dao.actualizar(centroFormacion);
 	}
-	
-	public List<String> listaCFparaPago() throws DAOExcepcion {
-		/**
-		 * @author Marco Chumpitaz.
-		 */
-		CentroFormacionDAO dao = new CentroFormacionDAO();
-		return dao.listarCFparaPago();		
-	}
 }

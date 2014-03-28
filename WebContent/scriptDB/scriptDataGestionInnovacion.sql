@@ -39,6 +39,26 @@ VALUES ('Marco', 'Aurelio', 'Yanez', 'M', 'DNI', '35488065', 'marco.aurelio@upc.
 
 INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
 VALUES ('Pablo', 'Narvaez', 'Pena', 'M', 'DNI', '33212222', 'pablo.narvaez@upc.edu.pe', '956128913', 'pnarvaez', 'EVA', '10406048417');
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Luis','Salazar','Lopez','M','DNI','40582715','luis.salazar@cibertec.edu.pe','911892356','lsalazar','EVA','10334522659');
+
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Hector','Enciso','Robles','M','DNI','15590921','hector.enciso@cibertec.edu.pe','978152621','henciso','DOC','10334522659');
+
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Sandra','Jimenez','Llatas','F','DNI','48102051','sandra.jimenez@upc.edu.pe','915757412','sjimenez','DOC','10406048417');
+
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Juan','Pinto','Vivar','M','DNI','45753101','u200109081@idat.edu.pe','945103201','jvivar','EST','10804050208');
+
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Andrea','Miranda','Ruiz','F','DNI','48970271','u201202558@idat.edu.pe','940380021','amiranda','EST','10804050208');
+
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Julia','Rivera','Sarria','F','DNI','42070125','julia.rivera@idat.edu.pe','928119260','jrivera','EVA','10804050208');
+
+INSERT INTO USUARIO (No_Usuario, No_Ape_Paterno, No_Ape_Materno, Fl_Sexo, Co_Tipo_Documento, Nu_Documento, Tx_Email, Nu_Celular, Tx_Contrasenia, Co_Tipo_Usuario, Co_Centro_Formacion)
+VALUES ('Marcel','Saravia','Pinto','M','DNI','15482123','marcel.saravia@idat.edu.pe','985102512','msaravia','DOC','10804050208');
 
 -- IDEA
 INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
@@ -68,6 +88,17 @@ VALUES ('Organiza tu tiempo','Taller Online para organizar mejor el tiempo','tie
 INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
 VALUES ('Aprueba tus Examenes Online','Tutorial con tecnicas de estudio para rendir adecuadamente los examenes online','examenes,online,aprobar,tecnicas','/archivo/upload/ApruebaExamenesOnline.docx',3,'REC','2014-03-19 03:57:07','2014-03-19 03:57:07',7);
 
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Grupos de Trabajo Interdiciplinas', 'Formación de grupos de trabajo entre alumnos de diferentes especialidades', 'grupo,especialidades,trabajo,estructura', '/archivo/upload/workgroup.pdf', 2, 'CRE', '2014-02-20 13:00:07', NULL, NULL);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Lectura Academica', 'Metodo para generar conciencia de lectura informativa y profesional', 'lectura,conciencia,academica,metodo', '/archivo/upload/lecturaca.pdf', 3, 'PUB', '2014-02-15 18:10:07', NOW(), NULL);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Conciencia Solidaria', 'Metodologia para crear conciencia solidaria', 'solidaridad,conciencia,metodo,social', '/archivo/upload/concienciasolidaria.docx', 4, 'APR', '2014-02-05 11:01:27', NOW(), 6);
+
+INSERT INTO IDEA (No_Titulo, Tx_Descripcion, Tx_Palabras_Clave, Tx_Archivo, Co_Estudiante, Co_Estado, Fe_Creacion, Fe_Publicacion, Co_Asesor)
+VALUES ('Trabaja y estudia sin contratiempos', 'Recomendaciones para trabajar y estudiar a la vez', 'tabajar,estudiar,recomendacion,simultaneo', '/archivo/upload/trabestud.pdf', 2, 'REC', '2014-02-10 08:00:17', NOW(), NULL);
 -- USUARIO PERMITIDO
 INSERT INTO USUARIO_PERMITIDO (Co_Usuario, Co_Idea, Qt_Puntaje)
 VALUES (3, 2, 4);

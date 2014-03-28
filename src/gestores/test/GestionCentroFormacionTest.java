@@ -6,11 +6,9 @@ import gestores.modelo.CentroFormacion;
 import gestores.modelo.PlanTarifario;
 import gestores.negocio.GestionCentroFormacion;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Test;
 
 public class GestionCentroFormacionTest {
 
@@ -148,25 +146,5 @@ public class GestionCentroFormacionTest {
 		} catch (DAOExcepcion e) {
 			Assert.fail("Falló la eliminición: " + e.getMessage());
 		}
-	}
-
-	@Test
-	public void listarCFparaPago(){
-		GestionCentroFormacion negocio = new GestionCentroFormacion();
-		try {
-			ArrayList listado = new ArrayList<>(); 
-			listado.add(negocio.listaCFparaPago());
-			
-			System.out.println("Total de registros: " + listado.size());
-
-			//while (listado.c) {
-			//	System.out.println(vo.getNombre() + " - "
-			//			+ vo.getTipoCentroFormacion().toString());
-			//}
-			Assert.assertTrue(listado.size() > 0);
-		} catch (DAOExcepcion e) {
-			Assert.fail("Falló la lista: " + e.getMessage());
-		}
-		
 	}
 }
