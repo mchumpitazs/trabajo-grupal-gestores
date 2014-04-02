@@ -45,7 +45,11 @@ public class FechaUtil {
 		return Integer.parseInt(dateFormat.format(fecha));
 	}
 
+<<<<<<< HEAD
 	public static Timestamp convertirSqlDate(Date fecha) {
+=======
+	public static Timestamp convertirTimestamp(Date fecha) {
+>>>>>>> refs/remotes/upstream/master
 		return new Timestamp(fecha.getTime());
 	}
 }
