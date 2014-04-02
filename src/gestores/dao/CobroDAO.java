@@ -20,25 +20,42 @@ import java.util.Collection;
 
 public class CobroDAO extends BaseDAO {
 
-	public ArrayList<String> listarCFparaCobro() throws DAOExcepcion{
+	public Collection<ReportePago> listarCFparaCobro(CentroFormacion centroform, String mes, int anio) throws DAOExcepcion{
 		
-		ArrayList<String> lista = new ArrayList<String>();
+		Collection<ReportePago> lista = new ArrayList<ReportePago>();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String registroX = "";
-			String query = "SELECT cf.No_Centro_Formacion, cf.Co_Tipo_Centro_Formacion, pt.No_Plan_Tarifario,"
-						+	"(pt.Ss_Precio_Servicio + (sel2.Total_Ideas * pt.Ss_Precio_Tarifa)) Monto_a_Pagar "
-						+	"FROM centro_formacion cf inner join plan_tarifario pt "
-						+   "on (cf.Co_Plan_Tarifario=pt.Co_Plan_Tarifario) "
-						+	"left join (SELECT us4.Co_Centro_Formacion, count(*) Total_Ideas"
-						+	" FROM idea id4 inner join usuario us4 on id4.Co_Estudiante=us4.Co_Usuario "
-						+	"group by us4.Co_Centro_Formacion) sel2 "
-						+	"on (cf.Co_Centro_Formacion= sel2.Co_Centro_Formacion)";
+				String condicion = "";
+				String query = "SELECT No_Centro_Formacion, Co_Tipo_Centro_Formacion,No_Plan_Tarifario, Fe_Mes_Pago, Fe_Anio_Pago, Ss_Monto_Mensual " 
+					+ "FROM centro_formacion cf inner join reporte_pago rp " 
+					+ "on (cf.Co_Centro_Formacion = rp.Co_Centro_Formacion) "
+					+ "left join plan_tarifario pt "
+					+ "on (cf.Co_Plan_Tarifario = pt.Co_Plan_Tarifario)"
+					+ "where No_Centro_Formacion like ? " + condicion;
 			
 			con = ConexionBD.obtenerConexion();
 			stmt = con.prepareStatement(query);
+			
+			stmt.setString(1, centroform.getNombre().toString());
+			
+			if (centroform.getTipoCentroFormacion() != null) {
+				condicion = "and  Co_Tipo_Centro_Formacion like ? ";
+				stmt.setString(2, centroform.getTipoCentroFormacion().getCodigo());
+			}
+			
+			if (mes != null) {
+				condicion += "AND Fe_Mes_Pago = ? ";
+				stmt.setString(3, mes);
+			}
+			
+			if (anio == 0) {
+				condicion += "AND Fe_Anio_Pago = ? ";
+				stmt.setInt(4, anio);
+			}
+			
+			
 			
 			rs = stmt.executeQuery();
 			while (rs.next()) {

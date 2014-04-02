@@ -1,18 +1,18 @@
-package gestores.servlet.evaluador;
+package gestores.servlet.cobranza;
 
 import gestores.enums.EstadoIdea;
+import gestores.enums.TipoCentroFormacion;
 import gestores.modelo.CentroFormacion;
 import gestores.modelo.Idea;
+import gestores.modelo.PlanTarifario;
+import gestores.modelo.ReportePago;
 import gestores.modelo.Usuario;
+import gestores.negocio.GestionCobro;
 import gestores.negocio.GestionEvaluador;
-import gestores.util.FechaUtil;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -22,21 +22,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.Assert;
-
-
-
 /**
- * Servlet implementation class EvaluadorListadoIdeasServlet
+ * Servlet implementation class GestionCobranzaServlet
  */
-@WebServlet("/EvaluadorListadoIdeasServlet")
-public class EvaluadorListadoIdeasServlet extends HttpServlet {
+@WebServlet("/GestionCobranzaServlet")
+public class GestionCobranzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public EvaluadorListadoIdeasServlet() {
+    public GestionCobranzaServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -53,27 +50,31 @@ public class EvaluadorListadoIdeasServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-		String criterio = request.getParameter("criterio");
-		String criterio_txt = request.getParameter("txtcriterio");
-		String desde = request.getParameter("desde");
-		String hasta = request.getParameter("hasta");
-		String estado = request.getParameter("estado");
+		String nombrei = request.getParameter("txtnombre");
+		String tipo = request.getParameter("optipo");
+		String mes = request.getParameter("opmes");
+		String anio = request.getParameter("opanio");
 		Date fecha_ini = null;//formatter.parse(desde);
 		Date fecha_fin = null;//formatter.parse(hasta);
 		
-		Idea ideab = new Idea();
-		switch(criterio) {
-			case "Titulo":
-				ideab.setTitulo(criterio_txt);
+		
+		CentroFormacion cf1 = new CentroFormacion();
+		cf1.setNombre(nombrei);
+		switch(tipo) {
+			case "Todos":
+				cf1.setTipoCentroFormacion(null);
 			break;
-			case "Descripcion":
-				ideab.setDescripcion(criterio_txt);
+			case "Universidad":
+				cf1.setTipoCentroFormacion(TipoCentroFormacion.Universidad);
 				break;
-			case "Palabras_clave":
-				ideab.setPalabrasClave(criterio_txt);
+			case "Instituto":
+				cf1.setTipoCentroFormacion(TipoCentroFormacion.Instituto);
 				break;
 		}
 		
+		ReportePago rp = new ReportePago();		
+	
+		rp.setCentroFormacion(cf1);
 		
 		switch(estado) {
 			case "Creada":
@@ -90,13 +91,8 @@ public class EvaluadorListadoIdeasServlet extends HttpServlet {
 			break;
 		}
 		
-		CentroFormacion centroFormacion = new CentroFormacion(); 
-		centroFormacion.setCodigo("10406048417");
-		
-		Usuario evaluador  = new Usuario();
-		evaluador.setCentroFormacion(centroFormacion);
-		
-		GestionEvaluador negocio = new GestionEvaluador();
+	
+		GestionCobro negocio = new GestionCobro();
 		
 		try {
 		List<Idea> lista = negocio.listaIdeasporCF(evaluador, ideab, fecha_ini, fecha_fin);
@@ -110,4 +106,5 @@ public class EvaluadorListadoIdeasServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 	}
+
 }
