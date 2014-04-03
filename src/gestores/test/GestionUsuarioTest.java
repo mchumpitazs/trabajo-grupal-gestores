@@ -4,6 +4,7 @@ import gestores.enums.FiltroBusquedaUsuario;
 import gestores.enums.TipoDocumento;
 import gestores.enums.TipoUsuario;
 import gestores.exception.DAOExcepcion;
+import gestores.exception.LoginExcepcion;
 import gestores.modelo.CentroFormacion;
 import gestores.modelo.Usuario;
 import gestores.negocio.GestionUsuario;
@@ -30,12 +31,12 @@ public class GestionUsuarioTest {
 			usuario.setApellidoPaterno("Hernandez");
 			usuario.setApellidoMaterno("Rodriguez");
 			usuario.setSexo("F");
-			usuario.setTipoDocumento(TipoDocumento.CarnetExtranjeria);
+			usuario.setTipoDocumento(TipoDocumento.CARNET_EXTRANJERIA);
 			usuario.setNumeroDocumento("CEX123456789");
 			usuario.setEmail("victoria.hernandez@upc.edu.pe");
 			usuario.setNumeroCelular("962329330");
 			usuario.setContrasenia("vhernandez");
-			usuario.setTipoUsuario(TipoUsuario.Evaluador);
+			usuario.setTipoUsuario(TipoUsuario.EVALUADOR);
 			usuario.setCentroFormacion(centroFormacion);
 
 			Usuario vo = negocio.insertar(usuario);
@@ -71,11 +72,11 @@ public class GestionUsuarioTest {
 			usuario.setApellidoPaterno("Hernandez");
 			usuario.setApellidoMaterno("Rodriguez");
 			usuario.setSexo("F");
-			usuario.setTipoDocumento(TipoDocumento.Ruc);
+			usuario.setTipoDocumento(TipoDocumento.RUC);
 			usuario.setNumeroDocumento("10556089321");
 			usuario.setEmail("victoria.h@upc.edu.pe");
 			usuario.setNumeroCelular("962329555");
-			usuario.setTipoUsuario(TipoUsuario.Evaluador);
+			usuario.setTipoUsuario(TipoUsuario.EVALUADOR);
 			usuario.setCentroFormacion(centroFormacion);
 
 			Usuario vo = negocio.actualizar(usuario);
@@ -94,12 +95,12 @@ public class GestionUsuarioTest {
 			usuario.setTipoUsuario(null);
 
 			List<Usuario> listado = negocio.listar(
-					FiltroBusquedaUsuario.Nombre, usuario);
+					FiltroBusquedaUsuario.NOMBRE, usuario);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (Usuario vo : listado) {
 				System.out.println(vo.getNombre() + " - "
-						+ vo.getTipoUsuario().toString());
+						+ vo.getTipoUsuario().getNombre());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -113,15 +114,15 @@ public class GestionUsuarioTest {
 		try {
 			Usuario usuario = new Usuario();
 			usuario.setNombre("");
-			usuario.setTipoUsuario(TipoUsuario.Evaluador);
+			usuario.setTipoUsuario(TipoUsuario.EVALUADOR);
 
 			List<Usuario> listado = negocio.listar(
-					FiltroBusquedaUsuario.Nombre, usuario);
+					FiltroBusquedaUsuario.NOMBRE, usuario);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (Usuario vo : listado) {
 				System.out.println(vo.getNombre() + " - "
-						+ vo.getTipoUsuario().toString());
+						+ vo.getTipoUsuario().getNombre());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -138,12 +139,12 @@ public class GestionUsuarioTest {
 			usuario.setTipoUsuario(null);
 
 			List<Usuario> listado = negocio.listar(
-					FiltroBusquedaUsuario.Nombre, usuario);
+					FiltroBusquedaUsuario.NOMBRE, usuario);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (Usuario vo : listado) {
 				System.out.println(vo.getNombre() + " - "
-						+ vo.getTipoUsuario().toString());
+						+ vo.getTipoUsuario().getNombre());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -160,12 +161,12 @@ public class GestionUsuarioTest {
 			usuario.setTipoUsuario(null);
 
 			List<Usuario> listado = negocio.listar(
-					FiltroBusquedaUsuario.ApellidoPaterno, usuario);
+					FiltroBusquedaUsuario.APELLIDO_PATERNO, usuario);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (Usuario vo : listado) {
 				System.out.println(vo.getNombre() + " - "
-						+ vo.getTipoUsuario().toString());
+						+ vo.getTipoUsuario().getNombre());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -182,12 +183,12 @@ public class GestionUsuarioTest {
 			usuario.setTipoUsuario(null);
 
 			List<Usuario> listado = negocio.listar(
-					FiltroBusquedaUsuario.ApellidoMaterno, usuario);
+					FiltroBusquedaUsuario.APELLIDO_MATERNO, usuario);
 			System.out.println("Total de registros: " + listado.size());
 
 			for (Usuario vo : listado) {
 				System.out.println(vo.getNombre() + " - "
-						+ vo.getTipoUsuario().toString());
+						+ vo.getTipoUsuario().getNombre());
 			}
 			Assert.assertTrue(listado.size() > 0);
 		} catch (DAOExcepcion e) {
@@ -199,14 +200,12 @@ public class GestionUsuarioTest {
 	public void autenticarTest() {
 		GestionUsuario negocio = new GestionUsuario();
 		try {
-			Usuario usuario = new Usuario();
-			usuario.setEmail("hbravocoronel@gmail.com");
-			usuario.setContrasenia("admin");
-
-			boolean autenticadoFlag = negocio.esAutenticado(usuario);
-
-			System.out.println("Es Autenticado: " + autenticadoFlag);
-			Assert.assertTrue(autenticadoFlag);
+			String email = "hbravocoronel@gmail.com";
+			String contrasenia = "admin";
+			Usuario usuario = negocio.autenticar(email, contrasenia);
+			Assert.assertNotNull(usuario);
+		} catch (LoginExcepcion e) {
+			Assert.fail("Falló la autenticación: " + e.getMessage());
 		} catch (DAOExcepcion e) {
 			Assert.fail("Falló la autenticación: " + e.getMessage());
 		}

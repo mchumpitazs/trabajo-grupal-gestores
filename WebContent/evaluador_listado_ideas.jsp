@@ -101,7 +101,9 @@
 		    <th width="150" scope="col">Fecha creación</th>
 		  </tr>
 		
-		<%@page import="java.util.*, gestores.modelo.Idea" %>
+		<%@page import="java.util.*, src.gestores.modelo.*" %>
+		<%@page import="java.util.*, src.gestores.enums.*" %>
+		
 		<%
 		Collection<Idea> arreglo = (ArrayList<Idea>)request.getAttribute("listax");
 		if(arreglo != null) { 
